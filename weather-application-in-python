@@ -1,0 +1,14 @@
+import requests
+import json
+
+api_key = "YOUR_API_KEY"
+
+def get_weather(location):
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
+    response = requests.get(url)
+    data = json.loads(response.text)
+    return data
+
+location = input("Enter a location: ")
+weather = get_weather(location)
+print(json.dumps(weather, indent=4))
